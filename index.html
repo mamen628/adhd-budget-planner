@@ -63,7 +63,11 @@ h1{font-family:var(--display);font-size:clamp(26px,5vw,34px);line-height:1.15;ma
 h2{font-family:var(--display);font-size:20px;margin:0 0 4px}
 .sub{color:var(--muted);margin:0}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;min-width:0;box-shadow:var(--shadow)}
-.card.hero{background:var(--grad);border-color:transparent;text-align:center;padding:30px 20px;color:#fff}
+.card.hero{background:var(--grad);border-color:transparent;text-align:left;padding:12px 16px;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 12px;align-items:center;border-radius:16px}
+.card.hero .eyebrow{grid-column:1;font-size:14px}
+.card.hero .big{grid-column:1;font-size:clamp(26px,7vw,34px);margin:0;line-height:1.15}
+.card.hero .chip{grid-column:2;grid-row:1/3;justify-self:end;align-self:center;font-size:14px;padding:4px 12px;text-align:center}
+.card.hero .sub{grid-column:1/-1;font-size:14px;margin:6px 0 0!important}
 .card.hero .eyebrow,.card.hero .sub{color:#e9f7f7}
 .card.hero .big{color:#fff}
 .card.hero .chip{background:#fff}
@@ -73,10 +77,10 @@ h2{font-family:var(--display);font-size:20px;margin:0 0 4px}
 .chip{display:inline-block;padding:4px 14px;border-radius:999px;font-weight:700;font-size:15px}
 .chip.ok{background:var(--ok-soft);color:var(--ok)}.chip.warn{background:var(--warn-soft);color:var(--warn)}.chip.bad{background:var(--bad-soft);color:var(--bad)}.chip.lav{background:var(--lav);color:var(--lav-ink)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.stat{background:var(--surface);border:1px solid transparent;border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.stat{background:var(--surface);border:1px solid transparent;border-radius:14px;padding:10px 13px;box-shadow:var(--shadow)}
 .stats .stat:nth-child(3n+1){background:var(--t1)}.stats .stat:nth-child(3n+2){background:var(--t2)}.stats .stat:nth-child(3n){background:var(--t3)}
-.stat .k{margin:0;color:var(--muted);font-size:14px;font-weight:600}
-.stat .v{margin:4px 0 0;font-family:var(--display);font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.stat .k{margin:0;color:var(--muted);font-size:13px;font-weight:600}
+.stat .v{margin:2px 0 0;font-family:var(--display);font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .stat.good .v{color:var(--ok)}.stat.bad .v{color:var(--bad)}
 .bar{height:12px;background:var(--line);border-radius:999px;overflow:hidden;margin:10px 0 4px}
 .bar>i{display:block;height:100%;background:var(--grad-btn);border-radius:999px}
@@ -85,14 +89,25 @@ h2{font-family:var(--display);font-size:20px;margin:0 0 4px}
 .bar.sv>i{background:linear-gradient(90deg,#86efac,#22c55e)}
 .stats .stat.in{background:var(--tin)}.stats .stat.out{background:var(--tout)}.stats .stat.sv{background:var(--tsv)}
 .stat.in .v{color:var(--in-ink)}.stat.out .v{color:var(--out-ink)}.stat.sv .v{color:var(--sv-ink)}
+.seg{display:flex;gap:6px;padding:4px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.seg button{flex:1 1 0;min-width:0;background:transparent;color:var(--muted);min-height:44px;padding:8px 4px;font-size:15px}
+.seg button[aria-pressed="true"]{background:var(--grad-btn);color:var(--accent-ink)}
 .t3w{container-type:inline-size}
 .today3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 @container (max-width:260px){.today3{grid-template-columns:1fr}}
-button.tile{container-type:inline-size;display:block;text-align:left;border:0;border-radius:16px;padding:12px 14px;min-height:76px;box-shadow:var(--shadow);color:var(--ink);font-weight:400;width:100%;position:relative}
+div.cell{container-type:inline-size;border-radius:14px;padding:8px 11px;min-height:64px;box-shadow:var(--shadow);min-width:0}
+div.cell .k{display:block;font-size:12px;font-weight:700;color:var(--muted)}
+div.cell .v{display:block;font-family:var(--display);font-size:clamp(12px,11cqi,18px);font-weight:700;font-variant-numeric:tabular-nums;margin-top:1px;overflow-wrap:break-word}
+div.cell .h{display:block;font-size:11px;color:var(--muted);margin-top:2px;overflow-wrap:break-word}
+div.cell.in{background:var(--tin)}div.cell.in .v{color:var(--in-ink)}
+div.cell.out{background:var(--tout)}div.cell.out .v{color:var(--out-ink)}
+div.cell.debt{background:var(--t2)}
+button.tile{container-type:inline-size;display:block;text-align:left;border:0;border-radius:14px;padding:8px 11px;min-height:64px;box-shadow:var(--shadow);color:var(--ink);font-weight:400;width:100%;position:relative}
 button.tile:hover{filter:brightness(.98)}
-button.tile .k{display:block;font-size:13px;font-weight:700;color:var(--muted)}
-button.tile .v{display:block;font-family:var(--display);font-size:clamp(13px,13cqi,24px);font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px;overflow-wrap:break-word}
+button.tile .k{display:block;font-size:12px;font-weight:700;color:var(--muted)}
+button.tile .v{display:block;font-family:var(--display);font-size:clamp(12px,11cqi,18px);font-weight:700;font-variant-numeric:tabular-nums;margin-top:1px;overflow-wrap:break-word}
 button.tile .plus{font-weight:700;opacity:.65;margin-left:4px}
+@container (max-width:150px){button.tile .plus{display:none}}
 button.tile.out{background:var(--tout)}button.tile.out .v{color:var(--out-ink)}
 button.tile.in{background:var(--tin)}button.tile.in .v{color:var(--in-ink)}
 button.tile.sv{background:var(--tsv)}button.tile.sv .v{color:var(--sv-ink)}
@@ -178,6 +193,7 @@ button.small{padding:6px 12px;min-height:36px;font-size:15px}
   .list li .small{flex:0 0 auto}
 }
 @media (max-width:380px){
+  .seg{gap:2px;padding:3px}.seg button{font-size:13px;padding:8px 1px}
   button.tile{padding:10px;min-height:72px}
   main{padding-left:12px;padding-right:12px}
   .card{padding:16px}
@@ -200,7 +216,7 @@ var KEY="adhd-budget-planner-v1";
 var CATS=["Groceries","Eating out","Transport","Home","Health","Fun","Shopping","Other"];
 var MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 var FREQ={weekly:"Every week",biweekly:"Every 2 weeks",monthly:"Every month"};
-var ZOOMS=[80,90,100,110,125,150];
+var ZOOMS=[50,60,70,80,90,100,110,125,150];
 var DEF={v:1,setup:{name:"",pay:0,next:"",freq:"biweekly",theme:"auto",cur:"$",zoom:100},tx:[],bills:[],paid:{},funds:[],debts:[],extra:0,wait:[],sv:[],example:false};
 var memOnly=false;
 
@@ -253,7 +269,7 @@ function merge(p){
 function load(){try{var r=localStorage.getItem(KEY);if(r)return merge(JSON.parse(r));}catch(e){}return clone(DEF);}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));memOnly=false;}catch(e){memOnly=true;}}
 var S=load();
-var UI={y:new Date().getFullYear(),m:new Date().getMonth(),cy:new Date().getFullYear(),cm:new Date().getMonth(),qf:""};
+var UI={y:new Date().getFullYear(),m:new Date().getMonth(),cy:new Date().getFullYear(),cm:new Date().getMonth(),qf:"",per:"today"};
 
 /* ---------- pay cycle ---------- */
 function period(f){return f==="weekly"?7:f==="monthly"?30:14;}
@@ -447,17 +463,31 @@ function viewToday(){
   var F=figures();if(!F)return welcome();
   var pct=F.pool>0?Math.min(100,F.spent/F.pool*100):(F.spent>0?100:0);
   var h='<div><h1>Today</h1><p class="sub">'+esc(fmtLong(today()))+(S.setup.name?" &middot; Hi "+esc(S.setup.name):"")+'</p></div>';
-  var td=iso(today()),tSp=sum(S.tx.filter(function(t){return t.type==="spend"&&t.date===td;}),function(t){return t.amount;}),tIn=sum(S.tx.filter(function(t){return t.type==="income"&&t.date===td;}),function(t){return t.amount;}),tSv=sum(S.sv.filter(function(x){return x.date===td;}),function(x){return x.amount;});
-  h+='<div class="t3w"><div class="today3" id="today3"><button class="tile out" data-act="qa" data-m="spend" id="tile-spent" aria-label="Today spent. Add a purchase"><span class="k">Today spent <span class="plus" aria-hidden="true">+</span></span><span class="v" id="t-spent">'+money(tSp)+'</span></button>'+
-     '<button class="tile in" data-act="qa" data-m="income" id="tile-income" aria-label="Today income. Add money in"><span class="k">Today income <span class="plus" aria-hidden="true">+</span></span><span class="v" id="t-income">'+money(tIn)+'</span></button>'+
-     '<button class="tile sv" data-act="qa" data-m="save" id="tile-saving" aria-label="Today saving. Put money in savings"><span class="k">Today saving <span class="plus" aria-hidden="true">+</span></span><span class="v" id="t-saving">'+money(tSv)+'</span></button></div></div>';
+  var td=iso(today()),per=UI.per||"today",ym=td.slice(0,7),yr=td.slice(0,4);
+  h+='<div class="seg" role="group" aria-label="Period" id="period">'+[["today","Today"],["monthly","Monthly"],["annual","Annually"]].map(function(x){return '<button data-act="period" data-p="'+x[0]+'" aria-pressed="'+(per===x[0])+'">'+x[1]+'</button>';}).join("")+'</div>';
+  function inc(pre){return sum(S.tx.filter(function(t){return t.type==="income"&&t.date.slice(0,pre.length)===pre;}),function(t){return t.amount;});}
+  function spd(pre){return sum(S.tx.filter(function(t){return t.type==="spend"&&t.date.slice(0,pre.length)===pre;}),function(t){return t.amount;});}
+  if(per==="today"){
+    var tSp=spd(td),tIn=inc(td),tSv=sum(S.sv.filter(function(x){return x.date===td;}),function(x){return x.amount;});
+    h+='<div class="t3w"><div class="today3" id="today3"><button class="tile out" data-act="qa" data-m="spend" id="tile-spent" aria-label="Today spent. Add a purchase"><span class="k">Today spent <span class="plus" aria-hidden="true">+</span></span><span class="v" id="t-spent">'+money(tSp)+'</span></button>'+
+       '<button class="tile in" data-act="qa" data-m="income" id="tile-income" aria-label="Today income. Add money in"><span class="k">Today income <span class="plus" aria-hidden="true">+</span></span><span class="v" id="t-income">'+money(tIn)+'</span></button>'+
+       '<button class="tile sv" data-act="qa" data-m="save" id="tile-saving" aria-label="Today saving. Put money in savings"><span class="k">Today saving <span class="plus" aria-hidden="true">+</span></span><span class="v" id="t-saving">'+money(tSv)+'</span></button></div></div>';
+  }else{
+    var pre=per==="monthly"?ym:yr,word=per==="monthly"?"Monthly":"Annual",id=per==="monthly"?"mo":"yr",
+        ppy=S.setup.freq==="weekly"?52:S.setup.freq==="monthly"?12:26,mul=per==="monthly"?ppy/12:ppy,
+        debtPay=r2(sum(S.debts,function(d){return d.min;})*mul),owed=sum(S.debts,function(d){return d.balance;}),when=per==="monthly"?MONTHS[today().getMonth()]+" so far":yr+" so far";
+    h+='<div class="t3w"><div class="today3" id="'+per+'3">'+
+       '<div class="cell in"><span class="k">'+word+' income</span><span class="v" id="'+id+'-income">'+money(inc(pre))+'</span><span class="h">'+(S.setup.pay>0?'Expected about '+money(S.setup.pay*mul):'Set your pay in Setup')+'</span></div>'+
+       '<div class="cell out"><span class="k">'+word+' spending</span><span class="v" id="'+id+'-spend">'+money(spd(pre))+'</span><span class="h">'+esc(when)+'</span></div>'+
+       '<div class="cell debt"><span class="k">'+word+' debt</span><span class="v" id="'+id+'-debt">'+money(debtPay)+'</span><span class="h">'+(S.debts.length?'Owed in total '+money(owed):'No debts')+'</span></div></div></div>';
+  }
   if(S.example)h+='<p class="note" style="margin:0">You are looking at example data. <a href="#setup">Clear it in Setup</a> when you are ready to start.</p>';
-  h+='<section class="card hero"><p class="eyebrow">You can spend today</p><p class="big" id="daily">'+money(F.daily)+'</p><span class="chip '+F.state[0]+'" id="state">'+esc(F.state[1])+'</span>'+
-     '<p class="sub" style="margin-top:12px">'+money(F.left)+' left until payday on '+esc(fmtDate(F.c.next))+' ('+F.c.days+' day'+(F.c.days===1?"":"s")+')</p></section>';
   h+='<div class="stats"><div class="stat in"><p class="k">Paycheck</p><p class="v">'+money(S.setup.pay)+'</p></div>'+
      '<div class="stat"><p class="k">Bills, savings, debt</p><p class="v">'+money(F.billsTotal+F.fundsPer+F.debtPer)+'</p></div>'+
      '<div class="stat out"><p class="k">Spent so far</p><p class="v">'+money(F.spent)+'</p></div></div>';
-  h+='<section class="card"><h2>Spending money for this paycheck</h2><div class="bar sp'+(F.spent>F.pool?" over":"")+'"><i style="width:'+pct.toFixed(0)+'%"></i></div><p class="note" style="margin:0">'+money(F.spent)+' of '+money(F.pool)+' used</p></section>';
+  h+='<section class="card"><h2>Spending money for this paycheck</h2><div class="bar sp'+(F.spent>F.pool?" over":"")+'"><i style="width:'+pct.toFixed(0)+'%"></i></div><p class="note" style="margin:0">'+money(F.spent)+' of '+money(F.pool)+' used</p>'+
+     '<p style="margin:12px 0 0">You can spend about <b id="daily">'+money(F.daily)+'</b> a day &middot; <span class="chip '+F.state[0]+'" id="state">'+esc(F.state[1])+'</span></p>'+
+     '<p class="note" style="margin:6px 0 0">'+money(F.left)+' left until payday on '+esc(fmtDate(F.c.next))+' ('+F.c.days+' day'+(F.c.days===1?"":"s")+')</p></section>';
   h+=chartCard("spend","Spending each day","Each bar is one day of this paycheck. The dark line is the daily pace that keeps you on budget.",spendChart(F));
   h+='<section class="card"><h2>Add a purchase</h2>'+spendForm("t")+'</section>';
   h+='<section class="card"><h2>Add money in</h2><form class="row" data-form="income" novalidate><label>From<input id="q-in-n" name="name" placeholder="e.g. Side job" maxlength="60" autocomplete="off"></label><label>How much<input id="q-in-a" name="amount" inputmode="decimal" placeholder="0.00"></label><label>Date<input id="q-in-d" name="date" type="date" value="'+iso(today())+'"></label><button type="submit">Add</button></form></section>';
@@ -678,6 +708,7 @@ var FORMS={
 };
 var ACTS={
  goSetup:function(){location.hash="#setup";},
+ period:function(e){UI.per=e.dataset.p;render();},
  qa:function(e){var m=e.dataset.m,t={spend:"#t-sn",income:"#q-in-n",save:"#q-sv-a"}[m],el=$(t);
    if(!el){if(m==="save")location.hash="#savings";return;}
    var card=el.closest(".card");if(card&&card.scrollIntoView)card.scrollIntoView({block:"center",behavior:"smooth"});el.focus({preventScroll:true});},
